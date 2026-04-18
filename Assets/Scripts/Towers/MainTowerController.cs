@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainTowerController : MonoBehaviour, ITowerController
 {
-    public int power { get; private set; }
+    [field: SerializeField] public int Power { get; private set; }
 
-    public float range { get; private set; }
+    [field: SerializeField] public float Range { get; private set; }
 
     public void Attack()
     {
-        Debug.Log("Main Tower Attacking with power: " + power + " and range: " + range);
+        Debug.Log($"Main Tower Attacking with power: {Power} and range: {Range}");
     }
 }

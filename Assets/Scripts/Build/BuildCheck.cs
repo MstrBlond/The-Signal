@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildCheck : MonoBehaviour
 {
@@ -12,6 +12,16 @@ public class BuildCheck : MonoBehaviour
         if (other.CompareTag("Tower"))
         {
             boxCollidersInside++;
+            other.GetComponentInParent<BuildCheck>().boxCollidersInside++;
+
+            var otherTower = other.GetComponentInParent<TowerNode>();
+            var thisTower = GetComponent<TowerNode>();
+
+            if (otherTower != null)
+            {
+                thisTower.Connect(otherTower);
+                PowerSystem.UpdateElectricity();
+            }
         }
     }
 
@@ -20,6 +30,16 @@ public class BuildCheck : MonoBehaviour
         if (other.CompareTag("Tower"))
         {
             boxCollidersInside--;
+            other.GetComponentInParent<BuildCheck>().boxCollidersInside--;
+
+            var otherTower = other.GetComponentInParent<TowerNode>();
+            var thisTower = GetComponent<TowerNode>();
+
+            if (otherTower != null)
+            {
+                thisTower.Disconnect(otherTower);
+                PowerSystem.UpdateElectricity();
+            }
         }
     }
 
@@ -27,7 +47,7 @@ public class BuildCheck : MonoBehaviour
     {
         if (isBuilding)
         {
-            canBuild = boxCollidersInside >= 2;
+            canBuild = boxCollidersInside >= 3;
             Debug.Log("Box colliders inside: " + boxCollidersInside);
 
             if (canBuild)

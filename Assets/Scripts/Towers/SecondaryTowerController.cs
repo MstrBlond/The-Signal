@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SecondaryTowerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private TowerNode node;
+
+    private void Awake()
     {
-        
+        node = GetComponent<TowerNode>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 }

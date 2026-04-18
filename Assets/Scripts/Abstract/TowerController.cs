@@ -1,7 +1,7 @@
 interface ITowerController
 {
-    public int power { get; }
-    public float range { get; }
+    public int Power { get; }
+    public float Range { get; }
 
-    public void Attack();
+    void Attack();
 }
