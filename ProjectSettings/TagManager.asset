@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tower
   - CinemachineTarget
+  - Danger
   layers:
   - Default
   - TransparentFX
